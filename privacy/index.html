@@ -19,11 +19,11 @@
   <main>
     <a class="brand" href="/">PAL Studio</a>
     <h1>VolleyCam Privacy Policy</h1>
-    <p class="date">Effective August 25, 2026 · Last updated September 14, 2026</p>
-    <div class="summary"><strong>Privacy summary.</strong> VolleyCam does not operate an advertising, analytics, account, or media server and does not sell or track user data. Core match information, media, and settings remain on the user’s devices. Optional YouTube Live sends user-authorized account requests and user-selected live content directly to Google/YouTube to provide that feature.</div>
+    <p class="date">Effective August 25, 2026 · Last updated October 14, 2026</p>
+    <div class="summary"><strong>Privacy summary.</strong> PAL Studio does not operate advertising, analytics, account, or media servers for VolleyCam and does not sell user data or use it for tracking. Core match information, media, and settings remain on the user’s devices. Optional YouTube Live uses Google Sign-In and YouTube services to authorize the user’s account, manage broadcasts, and transmit user-selected live content. Google’s processing for those services is described separately below.</div>
 
     <h2>Privacy at a Glance</h2>
-    <p>VolleyCam does not require an account for core recording, Camera/Remote, scorekeeping, rally, match-browser, or export features. PAL Studio does not collect those users’ match data or media on developer-operated servers. VolleyCam does not include advertising, tracking, third-party analytics, or third-party crash-reporting services.</p>
+    <p>VolleyCam does not require an account for core recording, Camera/Remote, scorekeeping, rally, match-browser, or export features. PAL Studio does not collect those users’ match data or media on developer-operated servers. VolleyCam does not include advertising or third-party crash reporting, and PAL Studio does not use app data for cross-app tracking or operate its own analytics service. The official Google Sign-In SDK is included only to support optional YouTube Live; Google’s SDK privacy declarations are explained below rather than being described as PAL Studio analytics.</p>
 
     <h2>Information Stored on the Device</h2>
     <p>VolleyCam may store settings, team and tournament names, scores, set information, match timelines, thumbnails, Photos references, Camera/Remote pairing information, and other app state locally. Recordings and exported clips are stored on the device and, when the user chooses, in Apple Photos.</p>
@@ -47,24 +47,33 @@
         <li>camera video, microphone audio, and visible scoreboard content only after the user explicitly starts a livestream.</li>
       </ul>
 
-      <h3>2. How VolleyCam uses Google and YouTube user data</h3>
-      <p>VolleyCam uses this data only to provide the user-requested YouTube Live feature: identify the signed-in channel; restore the authorized connection; list, create, select, update, and bind broadcasts and live streams; start, monitor, recover, and complete a broadcast; publish the selected live feed; obtain the viewer link; and let the user open, copy, display as a QR code, or share that link.</p>
-      <p>Google user data is not used for advertising, user profiling, data brokerage, unrelated analytics, or training generalized artificial-intelligence or machine-learning models.</p>
+      <h3>2. Google Sign-In service and SDK processing</h3>
+      <p>VolleyCam uses Google Sign-In for authorization but does not read the signed-in user’s Google profile name, email address, phone number, ID token, or server authorization code. VolleyCam receives the authorization result, verifies the granted YouTube scope, and uses the SDK-provided access token for the YouTube API requests described in this policy.</p>
+      <p><a href="https://developers.google.com/identity/sign-in/ios/app-privacy">Google’s published iOS Sign-In privacy information</a> states that the SDK may collect a user identifier to record OAuth grants and an IP address that may be used to estimate general location for fraud prevention.</p>
+      <p>The <a href="https://github.com/google/GoogleSignIn-iOS/blob/08d8dcecafb575f98879ffdbb8302c1b9ad65d19/GoogleSignIn/Sources/Resources/PrivacyInfo.xcprivacy">privacy manifest bundled with Google Sign-In 9.2.0</a> declares the following linked, non-tracking categories: name, email address, phone number, other data types, coarse location, user ID, device ID, and other usage data. It assigns App Functionality to name, email address, phone number, coarse location, user ID, and other data types, and Analytics to user ID, device ID, other usage data, and other data types. These are Google SDK declarations; they do not mean VolleyCam reads, stores, or receives every declared category. VolleyCam has no code that sends those SDK analytics categories to a PAL Studio server, and PAL Studio does not operate an analytics backend for the app. Google controls its service-side processing under its privacy policy and the user’s Google settings.</p>
 
-      <h3>3. With whom Google and YouTube user data is shared or transferred</h3>
+      <h3>3. How VolleyCam uses Google and YouTube user data</h3>
+      <p>VolleyCam uses this data only to provide the user-requested YouTube Live feature: identify the signed-in channel; restore the authorized connection; list, create, select, update, and bind broadcasts and live streams; start, monitor, recover, and complete a broadcast; publish the selected live feed; obtain the viewer link; and let the user open, copy, display as a QR code, or share that link.</p>
+      <p>PAL Studio does not use Google user data for advertising, user profiling, data brokerage, unrelated analytics, or training generalized artificial-intelligence or machine-learning models. Google’s own processing is governed by the Google policies and SDK declarations linked in this policy.</p>
+
+      <h3>4. With whom Google and YouTube user data is shared or transferred</h3>
       <p>VolleyCam does not sell Google user data and does not share it with advertisers or data brokers. Authorization, channel, broadcast, and stream requests travel directly between the user’s device and Google/YouTube as needed to perform the requested action. Live video, audio, and scoreboard content travel directly from the user’s device to YouTube during a livestream.</p>
       <p>A public viewer URL and safe broadcast status/title may be sent to the user’s paired VolleyCam Remote device so that the user can use sharing controls there. The viewer URL reaches other people only when the user explicitly invokes iOS sharing, copies or opens it, or presents its QR code. OAuth credentials, authorization headers, RTMPS ingestion addresses, and stream names/keys are not included in Camera/Remote messages, QR codes, or app-generated share and clipboard payloads.</p>
 
-      <h3>4. How sensitive Google and YouTube user data is protected</h3>
+      <h3>5. How sensitive Google and YouTube user data is protected</h3>
       <p>VolleyCam uses TLS/HTTPS for Google OAuth and YouTube API requests and requires RTMPS for live media. The official Google Sign-In SDK manages persisted Google authorization and token refresh using Google and iOS platform security. A manually entered RTMPS key is stored separately in the iOS Keychain with device-only protection.</p>
       <p>OAuth tokens, authorization headers, RTMPS credentials, and manual stream keys are excluded from match/rally metadata, ordinary logs, Remote messages, QR codes, and app-generated sharing. Error logs use categories and numeric diagnostics rather than response bodies or credentials.</p>
 
-      <h3>5. How Google and YouTube user data is retained and deleted</h3>
+      <h3>6. How Google and YouTube user data is retained and deleted</h3>
       <p>The Google Sign-In SDK retains authorization state locally so the user can remain signed in. VolleyCam caches channel ID, title, thumbnail URL, and validation time locally for up to 24 hours. It may retain non-secret broadcast/stream IDs, title, selected quality, and viewer URL while needed to restore or manage a prepared or interrupted session. Reusable-stream configuration metadata may be cached to avoid creating duplicates. Runtime RTMPS ingestion credentials remain only in memory while preparing or running the active session and are then cleared.</p>
       <p><strong>Sign Out</strong> in Settings → YouTube Live Streaming ends the local Google session and clears VolleyCam’s channel and account-derived session/resource caches, but does not revoke the Google grant. <strong>Disconnect YouTube Account</strong> asks Google to revoke VolleyCam authorization and clears those local caches. The user may also revoke VolleyCam through <a href="https://myaccount.google.com/connections">Google Account connections</a>. <strong>Forget Stream Key</strong> separately deletes a manually saved RTMPS key; other Manual RTMPS preferences remain independent of Google account disconnect.</p>
       <p>Sign out, disconnect, and app deletion do not delete videos, broadcasts, or reusable stream resources already in the user’s YouTube account. The user controls them in YouTube Studio. Local VolleyCam matches and videos are independent and remain until separately deleted in VolleyCam, Photos, or iOS.</p>
       <p>PAL Studio does not retain Google user data on developer-operated servers.</p>
     </section>
+
+    <h2>App Store Privacy Categories for Optional YouTube Live</h2>
+    <p>VolleyCam’s app privacy manifest declares four linked, non-tracking categories for App Functionality when the user chooses YouTube Live: User ID, Photos or Videos, Audio Data, and Other User Content. In this feature, those categories correspond to the authorized YouTube account/channel, live camera video, live microphone audio, and user-provided broadcast or visible scoreboard content sent to Google/YouTube.</p>
+    <p>Google Sign-In’s additional SDK categories and purposes are listed in the Google section above. Local-only VolleyCam settings, matches, media, and nearby-device traffic are not sent to PAL Studio and are not described as PAL Studio collection.</p>
 
     <h2>Other Retention and Deletion</h2>
     <p>Local app data remains until the user deletes it with VolleyCam controls, removes the app, erases the device, or otherwise manages it through iOS. Media saved to Photos can remain after VolleyCam is removed and must be deleted in Photos. PAL Studio cannot access, recover, or delete content stored only on the user’s devices or personal Photos library.</p>
